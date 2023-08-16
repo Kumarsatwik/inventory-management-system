@@ -1,0 +1,88 @@
+{% extends 'base.html' %} 
+{%load static%} 
+{% load custom_tags %} 
+{% block title%}Items List{%endblock%} 
+{%block content %}
+<h4 class="heading">Product List</h4>
+<hr />
+
+<section style="background-color: #eee">
+  <div class="container py-5">
+    <div class="row justify-content-center mb-3">
+      <div class="col-md-12 col-xl-10">
+        {%for item in items%}
+        <div class="card shadow-0 border rounded-3 my-2">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+                <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                  {% if item.image %}
+                  <img src="{{item.image.url}}" class="w-100" />
+                  {%endif%}
+                  <a href="#!">
+                    <div class="hover-overlay">
+                      <div
+                        class="mask"
+                        style="background-color: rgba(253, 253, 253, 0.15)"
+                      ></div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-5 col-lg-5 col-xl-5">
+                <h5>{{item.name}}</h5>
+              </div>
+              <div
+                class="col-md-6 col-lg-4 col-xl-4 border-sm-start-none border-start"
+              >
+                <div class="d-flex flex-row align-items-center mb-1">
+                  <h4 class="mb-1 me-1">₹{{item.selling_price}}</h4>
+                  <span class="text-danger pl-2"
+                    ><s> ₹{{item.selling_price|multiply}}.00 </s></span
+                  >
+                </div>
+                <h6 class="text-success mt-3">In Stock : {{item.quantity}}</h6>
+                <div class="d-flex align-items-end mt-3">
+                  <a
+                    class="text-decoration-none text-dark mx-2"
+                    href="/items/{{item.id}}/"
+                    ><button class="btn btn-outline-dark btn-sm">
+                      Details
+                    </button></a
+                  >
+
+                  <a class="text-decoration-none mx-2" href="/sell/{{item.id}}/">
+                    <button
+                      class="btn btn-outline-info btn-sm mt-2"
+                      type="button"
+                    >
+                      Sell
+                    </button>
+                    <a class="text-decoration-none mx-2" href="/edit/{{item.id}}/">
+                      <button
+                        class="btn btn-outline-info btn-sm mt-2"
+                        type="button"
+                      >
+                        Edit
+                      </button>
+                  </a>
+
+                  <a class="text-decoration-none mx-2" href="/order/{{item.id}}/">
+                    <button
+                      class="btn btn-outline-info btn-sm mt-2"
+                      type="button"
+                    >
+                      Order
+                    </button>
+                </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

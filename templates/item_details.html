@@ -1,0 +1,151 @@
+{% extends 'base.html' %} 
+{%load static%} 
+{% block title %}Item Details{%endblock%} 
+{%block heading%} Items Details {%endblock%} 
+{%block content %}
+<h4 class="heading">Product Details</h4>
+<hr />
+<!-- <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">IIN</th>
+      <th scope="col">Cost</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Quantity Sold</th>
+      <th scope="col">Selling Price</th>
+      <th scope="col">Profit Earned</th>
+      <th scope="col">Revenue</th>
+      {%if item.quantity == 0 %}
+      <th></th>
+      {%endif%}
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{item.name}}</td>
+      <td>{{item.iin}}</td>
+      <td>{{item.cost}}</td>
+      <td>{{item.quantity}}</td>
+      <td>{{item.quantity_sold}}</td>
+      <td>{{item.selling_price}}</td>
+      <td>{{item.profit_earned}}</td>
+      <td>{{item.revenue}}</td>
+      <td><button class="btn btn-link"><a href="/order/{{item.id}}/">Order</a></button></td>
+    </tr>
+  </tbody>
+</table> -->
+
+<!-- {%if orders %}
+<h1>Order Details</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Cost</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Total Cost</th>
+      <th scope="col">Order Date</th>
+      <th scope="col">Is Received</th>
+      <th scope="col">Is Cancel</th>
+      <th></th>
+    </tr>
+  </thead>
+  {%for item in orders%}
+  <tbody>
+    <tr>
+      <td>{{forloop.counter}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.item}}</td>
+      <td>{{item.quantity}}</td>
+      <td>{{item.cost}}</td>
+      <td>{{item.orderdttm}}</td>
+      <td class="text-center">{% if item.is_received %}<i class="bi bi-check-lg"></i> {%else%} <i class="bi bi-x-circle"></i>{%endif%}</td>
+      <td class="text-center">{%if item.is_cancel %} <i class="bi bi-check-lg"></i> {%else%} <i class="bi bi-x-circle"></i> {%endif%}</td>
+      {% if not item.is_received and not item.is_cancel %}<td><a href="/edit_order/{{item.id}}/">Edit Order</a></td>{%endif%}
+    </tr>
+  </tbody>
+  {%endfor%} 
+  </table>
+{%endif%}  -->
+  
+  <!-- {% if transactions %}
+
+  <h1>Transaction Details</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <td scope="col">#</td>
+        <th scope="col">Name</th>
+        <th scope="col">Item</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Selling Price</th>
+        <th scope="col">Transaction date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%for item in transactions%}
+      <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.item}}</td>
+        <td>{{item.quantity}}</td>
+        <td>{{item.selling_price}}</td>
+        <td>{{item.transactiondttm}}</td>
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+  {%endif%}  -->
+
+
+
+
+  <section style="background-color: #eee;">
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6 col-xl-8">
+          <div class="card text-black">
+            <img src="{{item.image.url}}"
+              class="card-img-top p-4" alt="product image" />
+            <div class="card-body">
+              <div class="text-center">
+                <h5 class="card-title">{{item.name}}</h5>
+                <p class="text-muted mb-4"></p>
+              </div>
+              <div>
+                <div class="d-flex justify-content-between">
+                  <span>Cost Of Product</span><span>{{item.cost}}</span>
+                </div>
+                <div class="d-flex justify-content-between my-2">
+                  <span>Sell Price Of Product</span><span>{{item.selling_price}}</span>
+                </div>
+                <div class="d-flex justify-content-between my-2">
+                  <span>Available Quantity</span><span>{{item.quantity}}</span>
+                </div>
+                <div class="d-flex justify-content-between my-2">
+                  <span>Quantity Sold</span><span>{{item.quantity_sold}}</span>
+                </div>
+                <div class="d-flex justify-content-between my-2">
+                  <span>Profit Earned</span><span>{{item.profit_earned}}</span>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between total font-weight-bold mt-4">
+                <span>Total Revenue</span><span>{{item.revenue}}</span>
+              </div>
+            </div>
+            <!-- <hr> -->
+            <!-- <div class="order mb-3 mx-3 ">
+              <a href="/order/{{item.id}}/"><button class="btn btn-dark float-right mx-2">Place Order</button></a>
+              <button class="btn btn-outline-warning float-right mx-2">Show Transaction</button>
+             <button class="btn btn-outline-danger float-right" data-mdb-toggle="modal" data-mdb-target="#order">Order Details</button>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% endblock %}
+</table>

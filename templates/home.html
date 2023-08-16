@@ -1,0 +1,187 @@
+{% extends 'base.html' %} 
+{% block title %}Inventory Management{% endblock %}
+{%load static%}
+
+{%block css%}
+<link rel="stylesheet" href="{%static 'css/dashboard.css'%}">
+{%endblock%}
+
+{%block script%}
+<script src=
+"https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript">
+</script>
+<script src=
+"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src=
+"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>
+
+{%endblock%}
+
+{%block content %}
+
+
+<h1 class="my-3">Dashboard</h1>
+<div class="dashboard">
+  
+  <!-- <h1 class="text-center"> Welcome To Inventory Management System!</h1>
+  <br>  
+  <button class="btn btn-outline-primary "><a class="text-decoration-none text-dark" href="{% url 'item_list' %}">List Of Items</button>
+  <button class="btn btn-outline-warning"><a class="text-decoration-none text-dark" href="{% url 'add_item' %}">Add Item</button> -->
+    <section class="first-section">
+      <!-- <h3 class="heading">Inventory Details</h3> -->
+      <div class="sales">
+        <p class="heading">Sales Overview</p>
+        <div>
+          <div >
+            <h4>Total Profit</h2>
+            <p>{{total_profit}}</p>
+          </div>
+          <div >
+            <h4>Revenue</h2>
+            <p>{{total_revenue}}</p>
+          </div>
+          
+          <div >
+            <h4>Cost</h2>
+            <p>{{total_cost}}</p>
+          </div>
+          <div >
+            <h4>Highest Product Profit</h2>
+            <p>{{highest_cost_item}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="purchase">
+        <p class="heading">Purchase Overview</p>
+        <div>
+          <div >
+            <h4>No of Order</h2>
+            <p>{{no_of_order}}</p>
+          </div>
+          <div >
+            <h4>Cancel Order</h2>
+            <p>{{cancel_order}}</p>
+          </div>
+          
+          <div >
+            <h4>Total Order Cost</h2>
+            <p>{{total_order_cost}}</p>
+          </div>
+          <div >
+            <h4>Pending Order</h2>
+            <p>{{willbeRecieved}}</p>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+      <!-- <div >
+        <h4>Highest Cost Item</h2>
+        <p>{{highest_cost_item}}</p>
+      </div>
+      <div >
+        <h4>Highest Profit Item</h2>
+        <p>{{highest_cost_item}}</p>
+      </div>
+      <div >
+        <h4>Highest Sold Item</h2>
+        <p>{{highest_cost_item}}</p>
+      </div> -->
+
+    <section class="second-section">    
+      <div class="inventory">
+        <p class="heading">Inventory Summary</p>
+        <div class="subclass">
+          <div >
+            <h4>Quantity in Hand</h2>
+            <p>{{items_in_stock}}</p>
+          </div>
+          <div >
+            <h4>Will be Received</h2>
+            <p>{{willbeRecieved}}</p>
+          </div>
+      </div>
+    </div>
+
+      <div class="Product-Details">
+        <p class="heading">Product Details</p>
+        <div class="subclass">
+          <div >
+            <h4>Total Stocks</h2>
+            <p>{{items_in_stock}}</p>
+          </div>
+          <div>
+            <h4>Low Stocks Items</h2>
+            <p>{{min_quantity}}</p>
+          </div>
+          <!-- <div >
+            <h4>Highest Stock Items</h2>
+            <p>{{highest_cost_item}}</p>
+          </div> -->
+          <div >
+            <h4>Highest Profit Item</h2>
+            <p>{{highest_profit_item}}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="transaction">
+        <p class="heading">Transaction Details</p>
+        <div class="subclass">
+          <div >
+            <h4>Total Transactions</h2>
+            <p>{{total_transaction}}</p>
+          </div>
+          <div >
+            <h4>Most Transaction Month</h2>
+            <p>{{most_active_month.month}}th month</p>
+          </div>
+          <div >
+            <h4>Transactions this month</h2>
+            <p>{{current_month}}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      
+      <section class="third-section">
+        <!-- <canvas id="myChart"></canvas> -->
+      </section>
+
+
+    </div>
+
+</div>
+
+<script>
+   let ctx = document.getElementById("myChart").getContext("2d");
+    let myChart = new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday",
+            ],
+            datasets: [
+                {
+                    label: "work load",
+                    data: [2, 9, 3, 17, 6, 3, 7],
+                    backgroundColor: "rgba(153,205,1,0.6)",
+                },
+                {
+                    label: "free hours",
+                    data: [2, 2, 5, 5, 2, 1, 10],
+                    backgroundColor: "rgba(155,153,10,0.6)",
+                },
+            ],
+        },
+    });
+</script>
+
+{% endblock %}

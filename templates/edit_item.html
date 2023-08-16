@@ -1,0 +1,13 @@
+{% extends 'base.html' %} 
+{%load static%}
+{% block title %}Edit Details of items{% endblock %} 
+{%block heading%} Edit Items {%endblock%} 
+{%load crispy_forms_tags %} 
+{%block content %}
+<h4 class="heading">Edit Product</h4>
+<hr />
+<form method="post" enctype="multipart/form-data">
+  {%csrf_token%} {{ form|crispy }}
+  <button class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %} {%load static%} {% block title%}Order List{%endblock%}
+{%block content %}
+
+<h4 class="heading">Order List</h4>
+<hr />
+
+<form method="get">
+  <div class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search Order List"
+      name="q"
+      value="{{ search_query }}"
+    />
+    <button class="btn btn-outline-secondary" type="submit">Search</button>
+  </div>
+</form>
+
+{%if orders %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Item</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Total Cost</th>
+      <th scope="col">Order Date</th>
+      <th scope="col">Is Received</th>
+      <th scope="col">Is Cancel</th>
+      <th></th>
+    </tr>
+  </thead>
+  {%for item in orders%}
+  <tbody>
+    <tr>
+      <td>{{forloop.counter}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.item}}</td>
+      <td>{{item.quantity}}</td>
+      <td>{{item.cost}}</td>
+      <td>{{item.orderdttm}}</td>
+      <td class="text-center">
+        {% if item.is_received %}<i class="bi bi-check-lg"></i> {%else%}
+        <i class="bi bi-x-circle"></i>{%endif%}
+      </td>
+      <td class="text-center">
+        {%if item.is_cancel %} <i class="bi bi-check-lg"></i> {%else%}
+        <i class="bi bi-x-circle"></i> {%endif%}
+      </td>
+      {% if not item.is_received and not item.is_cancel %}
+      <td><a href="/edit_order/{{item.id}}/">Edit Order</a></td>
+      {%endif%}
+    </tr>
+  </tbody>
+  {%endfor%}
+</table>
+{%else%}
+
+<p class="w-100 h-100 d-flex align-items-center justify-content-center h1">
+  No Orders Found ...
+</p>
+{%endif%} {%endblock%}

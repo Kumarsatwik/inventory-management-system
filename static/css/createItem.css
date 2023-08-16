@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+:root {
+  --font-style: "Poppins", sans-serif;
+  --font-heading: 600;
+  --font-subheading: 500;
+  --font-para: 400;
+}
+
+* {
+  font-family: var(--font-style);
+}
+
+.heading {
+  font-weight: var(--font-heading);
+  text-align: center;
+  font-size: 30px;
+}
+
+form {
+  margin: 2rem 2rem;
+}

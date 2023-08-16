@@ -1,0 +1,78 @@
+{% extends 'base.html' %} {%load static%} {% block title %}Inventory
+Management{% endblock %} {%load crispy_forms_tags %} {%block css%}
+<link rel="stylesheet" href="{%static 'css/createItem.css'%}" />
+{%endblock%} {%block content %} {%if message %}
+<div class="alert alert-warning" role="alert">{{message}}</div>
+{%endif%}
+<!-- <form method="post" action="/items/add/">
+  {%csrf_token%} {{ form|crispy }}
+  <button class="btn btn-primary">Submit</button>
+</form> -->
+<h4 class="heading">Add Product</h4>
+<hr />
+<form action="/items/add/" method="POST" enctype="multipart/form-data">
+  {%csrf_token%}
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="name">Product Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        name="name"
+        placeholder="Name of product"
+        required
+      />
+    </div>
+    <div class="form-group col-md-6">
+      <label for="Quantity">Quantity</label>
+      <input
+        type="number"
+        class="form-control"
+        id="quantity"
+        name="quantity"
+        placeholder="Quantity Of Product"
+        required
+      />
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Image Of Product</label>
+    <input
+      type="file"
+      class="form-control"
+      id="id_image"
+      accept="image/*"
+      name="image"
+      placeholder="Image Of Product"
+    />
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="selling">Selling Price</label>
+      <input
+        type="number"
+        class="form-control"
+        id="selling_price"
+        name="selling_price"
+        placeholder="Selling Price"
+        required
+      />
+    </div>
+    <div class="form-group col-md-6">
+      <label for="cost">Cost Price</label>
+      <input
+        type="number"
+        class="form-control"
+        id="cost"
+        name="cost"
+        placeholder="Cost Price"
+        required
+      />
+    </div>
+  </div>
+  <button type="submit" class="btn btn-outline-dark">Add Product</button>
+</form>
+
+<script src="{% static 'js/createItem.js' %}"></script>
+{% endblock %}

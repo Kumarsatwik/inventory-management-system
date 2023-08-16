@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+:root {
+  --font-style: "Poppins", sans-serif;
+  --font-heading: 600;
+  --font-subheading: 500;
+  --font-para: 400;
+}
+
+* {
+  font-family: var(--font-style);
+}
+
+/* Inventory */
+
+.dashboard {
+  padding: 1rem;
+}
+
+.heading {
+  font-weight: var(--font-subheading);
+}
+
+.first-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.first-section > .sales > div,
+.first-section > .purchase > div {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 5rem;
+}
+.sales,
+.purchase {
+  /* border: 1px solid black; */
+  margin: 0rem 0.5rem;
+  padding: 1rem 1.2rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 0.7rem;
+  width: 50%;
+}
+
+.sales > div > div > h4,
+.purchase > div > div > h4 {
+  font-size: 0.9rem;
+  font-weight: var(--font-para);
+}
+.sales > div > div > p,
+.purchase > div > div > p {
+  font-size: 1.2rem;
+  font-weight: var(--font-heading);
+}
+
+.second-section {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0rem;
+}
+
+.second-section > div {
+  margin: 0rem 0.5rem;
+  padding: 1rem 1.2rem;
+  width: 33%;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 0.7rem;
+}
+.second-section h4 {
+  font-weight: var(--font-para);
+  font-size: 0.9rem;
+}
+.subclass p {
+  font-size: 1.2rem;
+  font-weight: var(--font-heading);
+}
+
+.inventory > .subclass > div,
+.Product-Details > .subclass > div,
+.transaction > .subclass > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %} 
+{%load static%}
+{% block title %}Sell Items{% endblock %} 
+{%block heading%} Sell Items {%endblock%} 
+{%load crispy_forms_tags %} 
+{%block content %}
+
+{% if message %}
+<div class="alert alert-warning" role="alert">
+  {{message}}
+</div>
+{% endif %}
+
+<h4 class="heading">Sell Product</h4>
+<hr />
+<!-- Card -->
+<div class="card w-50 h-50 mx-auto">
+
+  <!-- Card image -->
+  <img class="card-img-top" src="{{item.image.url}}" alt="Card image cap">
+
+  <!-- Card content -->
+  <div class="card-body">
+
+    <!-- Title -->
+    <h4 class="card-title"><a>{{item.name}}</a></h4>
+    <!-- Text -->
+    <p class="card-text">Avaliable Quantity : <b>{{item.quantity}}</b></p>
+    <p class="card-text">Selling Price : <b>{{item.selling_price}}</b></p>
+
+    <form method="post">
+      {%csrf_token%} 
+      <!-- {{ form|crispy }} -->
+      <input type="text" class="form-control mb-3 w-25" placeholder="Enter Quantity" name="quantity" required>
+      
+      <button class="btn btn-primary">Submit</button>
+    </form>
+    
+
+  </div>
+
+</div>
+<!-- Card -->
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %} {%load static%} {% block title%}Transaction
+List{%endblock%} {%block content %}
+
+<h4 class="heading">Transaction List</h4>
+<hr />
+
+<form method="get">
+  <div class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search Transactions By Name"
+      name="q"
+      value="{{ search_query }}"
+    />
+    <button class="btn btn-outline-secondary" type="submit">Search</button>
+  </div>
+</form>
+
+{% if transactions %}
+<table class="table">
+  <thead>
+    <tr>
+      <td scope="col">#</td>
+      <th scope="col">Name</th>
+      <th scope="col">Item</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Selling Price</th>
+      <th scope="col">Transaction date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%for item in transactions%}
+    <tr>
+      <td>{{forloop.counter}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.item}}</td>
+      <td>{{item.quantity}}</td>
+      <td>{{item.selling_price}}</td>
+      <td>{{item.transactiondttm}}</td>
+    </tr>
+    {%endfor%}
+  </tbody>
+</table>
+{%else%}
+
+<p class="w-100 h-100 d-flex align-items-center justify-content-center h1">
+  No Transaction Found ...
+</p>
+{%endif%} {%endblock%}
