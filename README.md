@@ -3,8 +3,12 @@
 
 Technology
 ----------
-->  Django 
+-> Django  
+
 -> Python 
+
 -> MySql
+
 -> HTML
+
 -> CSS
